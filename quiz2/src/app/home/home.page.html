@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tipos de bromas para hacer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="colap">
+    <ion-toolbar>
+      <ion-title size="large">Bromas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-card *ngIf="randomJoke; else loadingJoke">
+      <ion-card-header>
+        <ion-card-title>Chiste</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ randomJoke }}
+      </ion-card-content>
+    </ion-card>
+
+    <ng-template #loadingJoke>
+      <ion-spinner name="cargandoo"></ion-spinner>
+    </ng-template>
+
+    <ion-list *ngIf="jokeCategories.length > 0; else loadingCategories">
+      <ion-item *ngFor="let category of jokeCategories">
+        <ion-label>{{ category }}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #loadingCategories>
+      <ion-spinner name="cargandoo"></ion-spinner>
+    </ng-template>
+
+  </ion-content>
+</ion-content>
